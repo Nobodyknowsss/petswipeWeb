@@ -3,40 +3,59 @@
 import Link from "next/link";
 import { Github, Linkedin, Mail, ArrowLeft, Menu, X } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Team() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const teamMembers = [
     {
-      name: "Alex Rodriguez",
-      role: "Full-Stack Developer & Co-Founder",
-      bio: "Leading the development of PetSwipe, our innovative pet adoption app, Alex specializes in creating scalable TikTok-style video feeds and seamless adoption form integrations. With expertise in React Native and cloud architecture, he ensures PetSwipe delivers smooth user experiences while connecting pets with their perfect families.",
-      skills: ["React Native", "Node.js", "AWS", "MongoDB", "Video Streaming"],
-      image: "/api/placeholder/300/300",
-      github: "https://github.com/alexrodriguez",
-      linkedin: "https://linkedin.com/in/alexrodriguez",
-      email: "alex@threeplets.com",
+      name: "Patrick",
+      role: "Chief Executive Officer & Co-Founder",
+      bio: "As CEO of PetSwipe, Patrick leads the vision and strategy behind revolutionizing pet adoption through technology. With a passion for connecting pets with loving families, he oversees the company's mission to make pet adoption as intuitive and engaging as social media. Patrick drives business development, partnerships with animal shelters, and ensures PetSwipe creates meaningful impact in the pet adoption ecosystem.",
+      skills: [
+        "Business Strategy",
+        "Leadership",
+        "Partnerships",
+        "Product Vision",
+        "Market Analysis",
+      ],
+      image: "/patrick.jpg",
+      github: "https://github.com/patrick",
+      linkedin: "https://linkedin.com/in/patrick",
+      email: "patrick@petswipe.com",
     },
     {
-      name: "Sarah Chen",
-      role: "Mobile App Developer & Co-Founder",
-      bio: "Sarah focuses on crafting intuitive mobile experiences for PetSwipe, our revolutionary pet adoption platform. She develops the engaging video interfaces and user-friendly adoption workflows that make pet discovery delightful in PetSwipe. Her expertise in Flutter and iOS/Android development ensures PetSwipe works flawlessly across all devices.",
-      skills: ["Flutter", "React Native", "iOS", "Android", "UX Design"],
-      image: "/api/placeholder/300/300",
-      github: "https://github.com/sarahchen",
-      linkedin: "https://linkedin.com/in/sarahchen",
-      email: "sarah@threeplets.com",
+      name: "Manaf",
+      role: "Chief Technology Officer & Co-Founder",
+      bio: "Manaf serves as CTO of PetSwipe, architecting the technical infrastructure that powers our revolutionary pet adoption platform. He leads the development of our TikTok-style video feed, real-time matching algorithms, and scalable backend systems. With expertise in mobile app development and cloud architecture, Manaf ensures PetSwipe delivers a seamless, fast, and reliable experience for both pet seekers and shelters.",
+      skills: [
+        "Mobile Development",
+        "System Architecture",
+        "Cloud Computing",
+        "API Design",
+        "Data Engineering",
+      ],
+      image: "/manaf.jpg",
+      github: "https://github.com/manaf",
+      linkedin: "https://linkedin.com/in/manaf",
+      email: "manaf@petswipe.com",
     },
     {
-      name: "Michael Thompson",
-      role: "Backend Developer & Co-Founder",
-      bio: "Michael builds the robust backend infrastructure that powers PetSwipe. He develops secure APIs for user verification, content management systems for shelters, and scalable database solutions for PetSwipe. His work ensures verified users can easily upload pet content while maintaining PetSwipe's security and performance.",
-      skills: ["Python", "Django", "PostgreSQL", "Docker", "API Development"],
-      image: "/api/placeholder/300/300",
-      github: "https://github.com/michaelthompson",
-      linkedin: "https://linkedin.com/in/michaelthompson",
-      email: "michael@threeplets.com",
+      name: "Janelle",
+      role: "Chief Operations Manager & Co-Founder",
+      bio: "Janelle oversees all operations at PetSwipe as our Chief Operations Manager, ensuring smooth day-to-day functioning and exceptional user experience. She manages relationships with animal shelters, coordinates content verification processes, and optimizes our platform's operational efficiency. Janelle's focus on user experience and operational excellence makes PetSwipe a trusted and reliable platform for pet adoption nationwide.",
+      skills: [
+        "Operations Management",
+        "User Experience",
+        "Process Optimization",
+        "Team Coordination",
+        "Quality Assurance",
+      ],
+      image: "/janelle.jpg",
+      github: "https://github.com/janelle",
+      linkedin: "https://linkedin.com/in/janelle",
+      email: "janelle@petswipe.com",
     },
   ];
 
@@ -139,11 +158,11 @@ export default function Team() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
               Meet Our{" "}
               <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                Team
+                Leadership Team
               </span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4 sm:px-0">
-              Three passionate developers revolutionizing pet adoption through
+              Three passionate leaders revolutionizing pet adoption through
               innovative technology. We&apos;re building{" "}
               <span className="font-semibold text-blue-400">PetSwipe</span>, a
               TikTok-style platform that connects pets with their perfect
@@ -163,13 +182,16 @@ export default function Team() {
                 className="bg-gray-800 rounded-lg p-6 sm:p-8 text-center"
               >
                 <div className="mb-6">
-                  <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-2xl sm:text-3xl font-bold text-white">
-                      {member.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </span>
+                  {/* Real photo */}
+                  <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600">
+                    <Image
+                      src={member.image}
+                      alt={`${member.name} - ${member.role}`}
+                      width={128}
+                      height={128}
+                      className="w-full h-full object-cover"
+                      priority={index === 0}
+                    />
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
                     {member.name}
@@ -236,7 +258,7 @@ export default function Team() {
             Ready to Work Together?
           </h3>
           <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 px-4 sm:px-0">
-            Our team is ready to bring your{" "}
+            Our leadership team is ready to bring your{" "}
             <span className="font-semibold text-blue-400">PetSwipe</span>-level
             innovation to your mobile app ideas. Let&apos;s create something
             amazing together.
